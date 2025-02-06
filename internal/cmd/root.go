@@ -8,14 +8,14 @@ import (
 
 func Execute(ctx context.Context) int {
 	rootCmd := &cobra.Command{
-		Use:   "~ [command]",
-		Short: "ToT",
+		Use:   "go-api [command]",
+		Short: "go-api",
 		Run: func(cmd *cobra.Command, args []string) {
 			cmd.Help()
 		},
 	}
 
-	rootCmd.AddCommand(APICmd(ctx))
+	rootCmd.AddCommand(StartCmd(ctx))
 
 	if err := rootCmd.Execute(); err != nil {
 		return 1

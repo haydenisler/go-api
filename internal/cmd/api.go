@@ -4,13 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/haydenisler/api/internal/api"
+	"github.com/haydenisler/go-api/internal/api"
 	"github.com/spf13/cobra"
 )
 
-func APICmd(ctx context.Context) *cobra.Command {
+func StartCmd(ctx context.Context) *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "api",
+		Use:   "start",
 		Args:  cobra.ExactArgs(0),
 		Short: "Runs the REST API",
 		RunE: func(cmd *cobra.Command, args []string) error {

@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/haydenisler/api/internal/cmd"
+	"github.com/haydenisler/go-api/internal/cmd"
 )
 
 func main() {

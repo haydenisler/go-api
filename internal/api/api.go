@@ -5,18 +5,24 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/haydenisler/api/internal/middleware"
+	"go.uber.org/zap"
 )
 
-type api struct{}
+type api struct {
+	ctx    context.Context
+	logger *zap.Logger
+}
 
 func NewAPI(ctx context.Context) *api {
-	return &api{}
+	return &api{
+		ctx: ctx,
+	}
 }
 
 func (a *api) Server(port int) *http.Server {
-	stack := middleware.CreateStack(
-		middleware.Logging,
+	stack := createMiddlewareStack(
+		a.loggingMiddleware,
+		a.requestIdMiddleware,
 	)
 
 	return &http.Server{
